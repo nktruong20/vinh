@@ -1,0 +1,137 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <owl-carousel-o [options]="customOptions">
+
+                <ng-container *ngFor="let slide of sliderImg">
+                  <ng-template carouselSlide [id]="slide.id">
+                    <img [src]="slide.img" width="100%" height="700px">
+                  </ng-template>
+                </ng-container>
+            
+              </owl-carousel-o>
+        </div>
+        <div class="col-md-5">
+            <div class="title">
+                <h5><span><i class="fa-solid fa-check"></i> favorite</span>{{listProduct.name}}</h5>
+            </div>
+            <div class="price"  >
+                <div class="flex">
+                    <div class="old">
+                        <span>{{listProduct.price}} $</span>
+                    </div>
+                    <div class="new">
+                        <span>{{listProduct.sale}} $</span>
+                    </div>
+                    <div class="sale">
+                        <span>{{listProduct.sell_percent}} sale</span>
+                    </div>
+                </div>
+            </div>
+            <div class="newness">
+                <div class="row">
+                    <div class="col-md-6 col-6">
+                        <h6>New degree : </h6>
+                    </div>
+                    <div class="col-md-6 col-6 ">
+                        <h6>{{listProduct.newness}}%</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="status">
+                <div class="row">
+                    <div class="col-md-6 col-6">
+                        <h6>Status : </h6>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <h6>stocking</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="purchases">
+                <div class="row">
+                    <div class="col-md-6 col-6">
+                        <h6>purchases : </h6>
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <h6>{{listProduct.purchases}} sold</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="transport">
+                <div class="row">
+                    <div class="col-md-6 col-6">
+                        <h6>Transport : </h6>
+                    </div>
+                    <div class="col-md-6 col-6">
+
+                        <select>
+                            <option value="0">HaNoi</option>
+                            <option value="1">HCM</option>
+                            <option value="0">DaNang</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="size">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6>Size </h6>
+                    </div>
+                    <div class="col-md-9">
+                       <div class="row">
+                        <div class="col-lg-3 col-md-3 col-3"><h6>M</h6></div>
+                        <div class="col-lg-3 col-md-3 col-3"><h6>L</h6></div>
+                        <div class="col-lg-3 col-md-3 col-3"><h6>XL</h6></div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="quantity">
+                <div class="row">
+                    <div class="col-md-3 col-6">
+                        <h6>Quantity</h6>
+                    </div>
+                    <div class="col-md-9 col-6">
+                        <span class="useQuantity" (click)="giamQuantity()">-</span><input class="quantityInp" type="text" [(ngModel)]="quantity" value="{{quantity}}"><span class="useQuantity" (click)="tangQuantity()">+</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-12" (click)="addToCart(listProduct)">
+                <h4 >ADD TO CART</h4>
+            </div>
+            <div class="return">
+                <div class="row">
+                    <div class="col-md-5 col-6">
+                        <h6><i class="fa-solid fa-shop"></i> Guaranteed shop</h6>
+                    </div>
+                    <div class="col-md-7 col-6">
+                        <h6>3 days return / refund</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="description">
+                <h6>Description : </h6>
+                <span>{{listProduct.desscription}}</span>
+            </div>
+
+        </div>
+    </div>
+    <div class="category">
+        <h3>you can see more</h3>
+        <div class="row">   
+            <div class="col-md-3" *ngFor="let item of listCategory">
+               <div class="hover">
+                <div class="img">
+                    <img src="{{item.img}}" alt="">
+                </div>
+                <div class="name">
+                    <h6 routerLink="/detail/{{item.id}}" (click)="reload(item.id)">Xem thêm</h6>
+                </div>
+               </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
